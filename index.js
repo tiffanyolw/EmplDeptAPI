@@ -3,7 +3,6 @@ const app = express();
 const config = require("./config");
 const Employee = require("./models/employee");
 const Department = require("./models/department");
-const { response } = require("express");
 
 app.use(express.json());
 
