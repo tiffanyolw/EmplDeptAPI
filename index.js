@@ -1,8 +1,11 @@
 const express = require("express");
 const app = express();
+// TODO: why don't need this?
+// const Sequelize = require("sequelize");
 const config = require("./config");
 const Employee = require("./models/employee");
 const Department = require("./models/department");
+const sequelize = require("sequelize");
 
 app.use(express.json());
 
@@ -11,6 +14,22 @@ config.authenticate().then(() => {
 }).catch((err) => {
     console.log(err);
 });
+
+// TODO: what does this do
+Department.hasMany(Employee, {
+    foreignKey: {
+        allowNull: false
+    },
+    onDelete: "CASCADE"
+});
+
+// what does this do
+sequelize.sync({force:false}).then((result) => {
+    console.log(result);
+}).catch((err) => {
+    console.log(err);
+});
+// ---------------------------------
 
 // ---------- DEPARTMENTS ---------- //
 // Add a new department
