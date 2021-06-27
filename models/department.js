@@ -9,7 +9,7 @@ const Department = config.define("Department", {
         primaryKey: true
     },
     title: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(45),
         allowNull: false
     }
 }, {timestamps: false});

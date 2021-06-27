@@ -20,10 +20,6 @@ const Employee = config.define("Employee", {
     salary: {
         type: Sequelize.DECIMAL,
         allowNull: false
-    },
-    department_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false
     }
 }, {timestamps: false});
 

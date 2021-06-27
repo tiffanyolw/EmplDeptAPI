@@ -6,8 +6,22 @@ const Department = require("./models/department");
 
 app.use(express.json());
 
+Department.hasMany(Employee, {
+    foreignKey: {
+        name: "department_id",
+        allowNull: false
+    },
+    onDelete: "CASCADE"
+});
+
 config.authenticate().then(() => {
     console.log("Database connected");
+}).catch((err) => {
+    console.log(err);
+});
+
+config.sync({force: false}).then(() => {
+    console.log("Sync successful");
 }).catch((err) => {
     console.log(err);
 });
